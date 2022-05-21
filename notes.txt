@@ -1,0 +1,5 @@
+convert opencv mat to armadillo mat
+convert armadillo mat to opencv mat
+calculate the distance
+find the closest cluster
+label the image
