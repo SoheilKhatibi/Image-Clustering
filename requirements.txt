@@ -1,0 +1,4 @@
+ubuntu==20.4
+
+opencv==4.5.4
+armadillo==10.8.2
