@@ -23,13 +23,14 @@ void displayImage(cv::Mat& opencv_mat) {
     cv::destroyWindow(windowName);
 }
 
-arma::Mat opencv2arma(cv::Mat& opencv_mat){
+arma::Mat<int> opencv2arma(cv::Mat& opencv_mat){
 
-    arma::Mat arma_mat(opencv_mat.data, opencv_mat.cols, opencv_mat.rows);
+    // arma::Mat arma_mat(opencv_mat.data, opencv_mat.cols, opencv_mat.rows);
+    arma::Mat<int> arma_mat(reinterpret_cast<int*>(opencv_mat.data), opencv_mat.cols, opencv_mat.rows);
     return arma_mat;
 }
 
-cv::Mat arma2opencv(arma::Mat& arma_mat){
+cv::Mat arma2opencv(arma::Mat<int>& arma_mat){
 
     cv::Mat opencv_mat2(arma_mat.n_cols, arma_mat.n_rows, CV_8UC1, arma_mat.memptr());
     return opencv_mat2;
