@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -g -Wall
-SRCS = matConvertor.cpp
+SRCS = main.cpp util.cpp k-means.cpp em.cpp
 PROG = mat
 
 OPENCV = `pkg-config opencv4 --cflags --libs`

@@ -1,10 +1,14 @@
-#include <iostream>
+#include "util.h"
 
 int main(int argc, char** argv){
 
     // KMeans algorithm("Lenna.png", 6);
     // EM algorithm("Lenna.png", 6);
     // algorithm.cluster();
+
+    cv::Mat img;
+    loadImage(img, "Lenna.png");
+    displayImage(img);
 
     return 0;
 }
