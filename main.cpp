@@ -1,10 +1,15 @@
 #include "util.h"
 
-int main(int argc, char** argv){
+int main(int argc, char** argv) {
 
     // KMeans algorithm("Lenna.png", 6);
     // EM algorithm("Lenna.png", 6);
     // algorithm.cluster();
+
+    // arma::Cube<int> a(5, 4, 3, arma::fill::ones);
+    // a.print("Cube:");
+    // a(4, 3, 2) = 0;
+    // a.slice(2).col(3).row(4).print("Matrix:");
 
     cv::Mat img;
     loadImage(img, "Lenna.png");
