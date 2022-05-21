@@ -4,7 +4,8 @@ SRCS = matConvertor.cpp
 PROG = mat
 
 OPENCV = `pkg-config opencv4 --cflags --libs`
-LIBS = $(OPENCV)
+ARMADILLO = -llapack -lblas -larmadillo
+LIBS = $(OPENCV) $(ARMADILLO)
 
 $(PROG):$(SRCS)
 	$(CC) $(CFLAGS) -o $(PROG) $(SRCS) $(LIBS)
