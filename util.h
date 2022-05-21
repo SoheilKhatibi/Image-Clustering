@@ -8,4 +8,7 @@
 int loadImage(cv::Mat&, std::string);
 void displayImage(cv::Mat&);
 
+arma::Mat opencv2arma(cv::Mat&);
+cv::Mat arma2opencv(arma::Mat&);
+
 #endif
