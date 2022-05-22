@@ -13,7 +13,10 @@ int main(int argc, char** argv) {
 
     cv::Mat img;
     loadImage(img, "Lenna.png");
-    displayImage(img);
+    // displayImage(img);
+    arma::Mat<int> armaImage = opencv2arma(img);
+    cv::Mat opencvImage = arma2opencv(armaImage);
+    displayImage(opencvImage);
 
     return 0;
 }

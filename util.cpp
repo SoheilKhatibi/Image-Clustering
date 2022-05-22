@@ -14,13 +14,13 @@ int loadImage(cv::Mat& opencv_mat, std::string address) {
 
 void displayImage(cv::Mat& opencv_mat) {
 
-    std::string windowName = "Display";
-    cv::namedWindow(windowName);
+    // std::string windowName = "Display";
+    // cv::namedWindow(windowName);
 
-    cv::imshow(windowName, opencv_mat);
+    cv::imshow("Display", opencv_mat);
     cv::waitKey(0);
 
-    cv::destroyWindow(windowName);
+    // cv::destroyWindow(windowName);
 }
 
 arma::Mat<int> opencv2arma(cv::Mat& opencv_mat){
