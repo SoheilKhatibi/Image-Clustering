@@ -1,4 +1,6 @@
 #include "util.h"
+#include "k-means.h"
+#include "em.h"
 
 int main(int argc, char** argv) {
 

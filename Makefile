@@ -1,6 +1,6 @@
 CC = g++
 CFLAGS = -g -Wall
-SRCS = main.cpp util.cpp k-means.cpp em.cpp
+SRCS = main.cpp util.cpp k-means.cpp em.cpp abstractClustering.cpp
 PROG = mat
 
 OPENCV = `pkg-config opencv4 --cflags --libs`
