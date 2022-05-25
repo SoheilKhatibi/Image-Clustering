@@ -7,6 +7,7 @@ void EMImageClustering::cluster() {
     while (!converged()) {
         EStep();
         MStep();
+        // displayImage(reconstructImage());
     }
 }
 
