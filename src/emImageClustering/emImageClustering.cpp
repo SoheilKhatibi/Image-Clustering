@@ -1,8 +1,6 @@
 #include "emImageClustering.h"
 
 EMImageClustering::EMImageClustering(std::string imgAddr, int n) : AbstractImageClustering(imgAddr, n) {
-    img = cv::imread(imgAddr);
-    inititalizeMeans();
 }
 
 void EMImageClustering::cluster() {

@@ -1,8 +1,6 @@
 #include "k-meansImageClustering.h"
 
 KMeansImageClustering::KMeansImageClustering(std::string imgAddr, int n) : AbstractImageClustering(imgAddr, n) {
-    img = cv::imread(imgAddr);
-    inititalizeMeans();
 }
 
 void KMeansImageClustering::cluster() {

@@ -12,10 +12,6 @@ public:
     bool converged();
     void BStep();
     void MStep();
-private:
-    cv::Mat img;
-    int nClusters;
-    int **means;
 };
 
 #endif // KMEANSIMAGECLUSTERING_H

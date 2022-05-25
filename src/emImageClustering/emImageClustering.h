@@ -13,10 +13,6 @@ public:
     void EStep();
     void MStep();
     cv::Mat reconstructImage();
-private:
-    cv::Mat img;
-    int nClusters;
-    int **means;
 };
 
 #endif // EMIMAGECLUSTERING_H

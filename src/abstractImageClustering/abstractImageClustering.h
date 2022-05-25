@@ -9,7 +9,7 @@ class AbstractImageClustering {
 public:
     AbstractImageClustering(std::string imgAddr, int n);
     void inititalizeMeans();
-private:
+protected:
     cv::Mat img;
     int nClusters;
     int **means;
