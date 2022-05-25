@@ -35,3 +35,26 @@ cv::Mat arma2opencv(arma::Mat<int>& arma_mat){
     cv::Mat opencv_mat2(arma_mat.n_cols, arma_mat.n_rows, CV_8UC1, arma_mat.memptr());
     return opencv_mat2;
 }
+
+double distance(int* a, int* b) {
+    double d[3], dist;
+    d[0] = abs(a[0] - b[0]);
+    d[1] = abs(a[1] - b[1]);
+    d[2] = abs(a[2] - b[2]);
+    dist = sqrt(pow(d[0], 2) + pow(d[1], 2) + pow(d[2], 2));
+    return dist;
+}
+
+int minimumDistanceIndex(int* a, int ** b, int sizeOfVector) {
+    int minimumIndex = 0;
+    double minDistance = INFINITY;
+    double dist;
+    for (int i = 0; i < sizeOfVector; i++) {
+        dist = distance(a, b[i]);
+        if (dist < minDistance) {
+            minimumIndex = i;
+            minDistance = dist;
+        }
+    }
+    return minimumIndex;
+}

@@ -6,5 +6,20 @@ KMeans::KMeans(std::string imgAddr, int n) : AbstractClustering(imgAddr, n) {
 }
 
 void KMeans::cluster() {
+    while (!converged()) {
+        BStep();
+        MStep();
+    }
+}
+
+bool KMeans::converged() {
+    return false;
+}
+
+void KMeans::BStep() {
+
+}
+
+void KMeans::MStep() {
 
 }

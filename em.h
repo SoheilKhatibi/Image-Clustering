@@ -9,6 +9,10 @@ class EM : public AbstractClustering {
 public:
     EM(std::string imgAddr, int n);
     void cluster();
+    bool converged();
+    void EStep();
+    void MStep();
+    cv::Mat reconstructImage();
 private:
     cv::Mat img;
     int nClusters;
