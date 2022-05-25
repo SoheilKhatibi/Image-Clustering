@@ -12,7 +12,6 @@ public:
     bool converged();
     void EStep();
     void MStep();
-    cv::Mat reconstructImage();
 };
 
 #endif // EMIMAGECLUSTERING_H
