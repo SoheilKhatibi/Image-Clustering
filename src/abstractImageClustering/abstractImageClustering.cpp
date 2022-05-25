@@ -1,12 +1,12 @@
 #include "abstractImageClustering.h"
 
 AbstractImageClustering::AbstractImageClustering(std::string imgAddr, int n) : nClusters(n) {
+    srand((unsigned)time(NULL));
     img = cv::imread(imgAddr);
     inititalizeMeans();
 }
 
 void AbstractImageClustering::inititalizeMeans() {
-    srand((unsigned)time(NULL));
     means = new int* [nClusters];
     for (int i = 0; i < nClusters; i++)
         means[i] = new int [3];
