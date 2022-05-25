@@ -1,13 +1,13 @@
-#ifndef KMEANS_H
-#define KMEANS_H
+#ifndef KMEANSIMAGECLUSTERING_H
+#define KMEANSIMAGECLUSTERING_H
 
 #include <iostream>
 #include <opencv4/opencv2/opencv.hpp>
-#include "abstractClustering.h"
+#include "abstractImageClustering.h"
 
-class KMeans : public AbstractClustering {
+class KMeansImageClustering : public AbstractImageClustering {
 public:
-    KMeans(std::string imgAddr, int n);
+    KMeansImageClustering(std::string imgAddr, int n);
     void cluster();
     bool converged();
     void BStep();
@@ -18,4 +18,4 @@ private:
     int **means;
 };
 
-#endif // KMEANS_H
+#endif // KMEANSIMAGECLUSTERING_H

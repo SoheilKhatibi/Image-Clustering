@@ -1,25 +1,25 @@
-#include "k-means.h"
+#include "k-meansImageClustering.h"
 
-KMeans::KMeans(std::string imgAddr, int n) : AbstractClustering(imgAddr, n) {
+KMeansImageClustering::KMeansImageClustering(std::string imgAddr, int n) : AbstractImageClustering(imgAddr, n) {
     img = cv::imread(imgAddr);
     inititalizeMeans();
 }
 
-void KMeans::cluster() {
+void KMeansImageClustering::cluster() {
     while (!converged()) {
         BStep();
         MStep();
     }
 }
 
-bool KMeans::converged() {
+bool KMeansImageClustering::converged() {
     return false;
 }
 
-void KMeans::BStep() {
+void KMeansImageClustering::BStep() {
 
 }
 
-void KMeans::MStep() {
+void KMeansImageClustering::MStep() {
 
 }

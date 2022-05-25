@@ -1,30 +1,30 @@
-#include "em.h"
+#include "emImageClustering.h"
 
-EM::EM(std::string imgAddr, int n) : AbstractClustering(imgAddr, n) {
+EMImageClustering::EMImageClustering(std::string imgAddr, int n) : AbstractImageClustering(imgAddr, n) {
     img = cv::imread(imgAddr);
     inititalizeMeans();
 }
 
-void EM::cluster() {
+void EMImageClustering::cluster() {
     while (!converged()) {
         EStep();
         MStep();
     }
 }
 
-bool EM::converged() {
+bool EMImageClustering::converged() {
     return false;
 }
 
-void EM::EStep() {
+void EMImageClustering::EStep() {
 
 }
 
-void EM::MStep() {
+void EMImageClustering::MStep() {
 
 }
 
-cv::Mat EM::reconstructImage() {
+cv::Mat EMImageClustering::reconstructImage() {
     int nearestMeanIndex;
     int sample[3];
     cv::Mat reconstructedImage(img.rows, img.cols, CV_8UC3);

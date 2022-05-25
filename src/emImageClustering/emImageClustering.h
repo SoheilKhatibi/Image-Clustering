@@ -1,13 +1,13 @@
-#ifndef EM_H
-#define EM_H
+#ifndef EMIMAGECLUSTERING_H
+#define EMIMAGECLUSTERING_H
 
 #include <iostream>
 #include <opencv4/opencv2/opencv.hpp>
-#include "abstractClustering.h"
+#include "abstractImageClustering.h"
 
-class EM : public AbstractClustering {
+class EMImageClustering : public AbstractImageClustering {
 public:
-    EM(std::string imgAddr, int n);
+    EMImageClustering(std::string imgAddr, int n);
     void cluster();
     bool converged();
     void EStep();
@@ -19,4 +19,4 @@ private:
     int **means;
 };
 
-#endif // EM_H
+#endif // EMIMAGECLUSTERING_H

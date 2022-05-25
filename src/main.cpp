@@ -1,11 +1,11 @@
 #include "util.h"
-#include "k-means.h"
-#include "em.h"
+#include "k-meansImageClustering.h"
+#include "emImageClustering.h"
 
 int main(int argc, char** argv) {
 
     // KMeans algorithm("Lenna.png", 6);
-    EM algorithm("Lenna.png", 6);
+    EMImageClustering algorithm("Lenna.png", 6);
     algorithm.cluster();
 
     // arma::Cube<int> a(5, 4, 3, arma::fill::ones);

@@ -1,13 +1,13 @@
-#ifndef ABSTRACTCLUSTERING_H
-#define ABSTRACTCLUSTERING_H
+#ifndef ABSTRACTIMAGECLUSTERING_H
+#define ABSTRACTIMAGECLUSTERING_H
 
 #include <iostream>
 #include <opencv4/opencv2/opencv.hpp>
 #include "util.h"
 
-class AbstractClustering {
+class AbstractImageClustering {
 public:
-    AbstractClustering(std::string imgAddr, int n);
+    AbstractImageClustering(std::string imgAddr, int n);
     void inititalizeMeans();
 private:
     cv::Mat img;
@@ -15,4 +15,4 @@ private:
     int **means;
 };
 
-#endif // ABSTRACTCLUSTERING_H
+#endif // ABSTRACTIMAGECLUSTERING_H
