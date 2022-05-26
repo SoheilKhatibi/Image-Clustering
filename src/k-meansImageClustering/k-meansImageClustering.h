@@ -12,6 +12,9 @@ public:
     bool converged();
     void BStep();
     void MStep();
+    void initializeBValues();
+private:
+    int *** b;
 };
 
 #endif // KMEANSIMAGECLUSTERING_H
