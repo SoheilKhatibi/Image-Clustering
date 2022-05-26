@@ -18,7 +18,7 @@ void displayImage(cv::Mat& opencv_mat) {
     // cv::namedWindow(windowName);
 
     cv::imshow("Display", opencv_mat);
-    cv::waitKey(0);
+    cv::waitKey(1);
 
     // cv::destroyWindow(windowName);
 }
