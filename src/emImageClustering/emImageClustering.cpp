@@ -5,17 +5,17 @@ EMImageClustering::EMImageClustering(std::string imgAddr, int n) : AbstractImage
 }
 
 void EMImageClustering::cluster() {
-    // int i = 0;
+    int i = 0;
     while (!converged()) {
         EStep();
         MStep();
         // inititalizeMeans();
-        // std::cout << "Iterate number " << i << std::endl;
+        std::cout << "Iterate number " << i << std::endl;
         // printMeans();
-        // cv::imshow("Original", img);
-        // cv::Mat reconstructedImage = reconstructImage();
-        // displayImage(reconstructedImage);
-        // i++;
+        cv::imshow("Original", img);
+        cv::Mat reconstructedImage = reconstructImage();
+        displayImage(reconstructedImage);
+        i++;
     }
 }
 

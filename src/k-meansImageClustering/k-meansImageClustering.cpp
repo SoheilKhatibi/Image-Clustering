@@ -5,17 +5,17 @@ KMeansImageClustering::KMeansImageClustering(std::string imgAddr, int n) : Abstr
 }
 
 void KMeansImageClustering::cluster() {
-    // int i = 0;
+    int i = 0;
     while (!converged()) {
         BStep();
         MStep();
         // inititalizeMeans();
-        // std::cout << "Iterate number " << i << std::endl;
+        std::cout << "Iterate number " << i << std::endl;
         // printMeans();
-        // cv::imshow("Original", img);
-        // cv::Mat reconstructedImage = reconstructImage();
-        // displayImage(reconstructedImage);
-        // i++;
+        cv::imshow("Original", img);
+        cv::Mat reconstructedImage = reconstructImage();
+        displayImage(reconstructedImage);
+        i++;
     }
 }
 
