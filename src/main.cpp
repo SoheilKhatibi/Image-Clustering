@@ -4,8 +4,8 @@
 
 int main(int argc, char** argv) {
 
-    // KMeans algorithm("Lenna.png", 6);
-    EMImageClustering algorithm("Lenna.png", 6);
+    KMeansImageClustering algorithm("Lenna.png", 6);
+    // EMImageClustering algorithm("Lenna.png", 6);
     algorithm.cluster();
 
     // arma::Cube<int> a(5, 4, 3, arma::fill::ones);
