@@ -4,7 +4,16 @@
 
 int main(int argc, char** argv) {
 
-    KMeansImageClustering algorithm("Lenna.png", 6);
+    // for (int i = 0; i < argc; i++) {
+    //     std::cout << argv[i] << std::endl;
+    // }
+
+    if (argc != 3) {
+        std::cout << "Usage: " << argv[0] << " <imageAddress> <nClusters>" << std::endl;
+        return 1;
+    }
+
+    KMeansImageClustering algorithm(argv[1], atoi(argv[2]));
     // EMImageClustering algorithm("Lenna.png", 6);
     algorithm.cluster();
 

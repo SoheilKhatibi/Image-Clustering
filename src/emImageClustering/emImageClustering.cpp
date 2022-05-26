@@ -1,6 +1,7 @@
 #include "emImageClustering.h"
 
 EMImageClustering::EMImageClustering(std::string imgAddr, int n) : AbstractImageClustering(imgAddr, n) {
+
 }
 
 void EMImageClustering::cluster() {
@@ -10,6 +11,8 @@ void EMImageClustering::cluster() {
         MStep();
         // inititalizeMeans();
         // std::cout << "Iterate number " << i << std::endl;
+        // printMeans();
+        // cv::imshow("Original", img);
         // cv::Mat reconstructedImage = reconstructImage();
         // displayImage(reconstructedImage);
         // i++;

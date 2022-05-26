@@ -12,6 +12,7 @@ void KMeansImageClustering::cluster() {
         // inititalizeMeans();
         // std::cout << "Iterate number " << i << std::endl;
         // printMeans();
+        // cv::imshow("Original", img);
         // cv::Mat reconstructedImage = reconstructImage();
         // displayImage(reconstructedImage);
         // i++;
