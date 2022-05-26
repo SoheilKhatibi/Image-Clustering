@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <opencv4/opencv2/opencv.hpp>
-#include "armadillo"
+#include <armadillo>
 #include <math.h>
 
 int loadImage(cv::Mat&, std::string);

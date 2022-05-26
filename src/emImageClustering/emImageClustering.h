@@ -12,6 +12,11 @@ public:
     bool converged();
     void EStep();
     void MStep();
+    void initializeCovariances();
+    void initializeHValues();
+private:
+    arma::mat* S;
+    double *** h;
 };
 
 #endif // EMIMAGECLUSTERING_H
