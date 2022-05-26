@@ -43,3 +43,11 @@ cv::Mat AbstractImageClustering::reconstructImage() {
 
     return reconstructedImage;
 }
+
+void AbstractImageClustering::printMeans() {
+    std::cout << "means: " << std::endl;
+    for (int i = 0; i < nClusters; i++) {
+        std::cout << "mean[" << i << "]: " << means[i][0] << " " << means[i][1] << " "<< means[i][2] << std::endl;
+    }
+    std::cout << "##################################################" << std::endl;
+}

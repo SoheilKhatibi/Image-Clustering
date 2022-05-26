@@ -10,6 +10,7 @@ public:
     AbstractImageClustering(std::string imgAddr, int n);
     void inititalizeMeans();
     cv::Mat reconstructImage();
+    void printMeans();
 protected:
     cv::Mat img;
     int nClusters;
