@@ -57,7 +57,9 @@ void EMImageClustering::EStep() {
 }
 
 void EMImageClustering::MStep() {
-
+    updateMeans();
+    updateCovariances();
+    updatePs();
 }
 
 void EMImageClustering::initializeCovariances() {
