@@ -115,11 +115,11 @@ void EMImageClustering::initializeCovariances() {
 }
 
 void EMImageClustering::initializeHValues() {
-    h = new int** [img.rows];
+    h = new double** [img.rows];
     for (int i = 0; i < img.rows; i++) {
-        h[i] = new int* [img.cols];
+        h[i] = new double* [img.cols];
         for (int j = 0; j < img.cols; j++) {
-            h[i][j] = new int [nClusters];
+            h[i][j] = new double [nClusters];
         }
     }
 
