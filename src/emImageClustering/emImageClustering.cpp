@@ -9,6 +9,9 @@ EMImageClustering::EMImageClustering(std::string imgAddr, int n) : AbstractImage
 void EMImageClustering::cluster() {
     int i = 0;
     while (!converged()) {
+        // printPs();
+        // printCovariances();
+        // printMeans();
         EStep();
         MStep();
         // inititalizeMeans();
@@ -28,18 +31,18 @@ bool EMImageClustering::converged() {
 void EMImageClustering::EStep() {
     double hSum;
     arma::mat x, m, xMinusM, xMinusMTrProductSIProductxMinusM;
-    for (int k = 0; k < nClusters; k++) {
-        hSum = 0;
-        m = arma::mat(3, 1, arma::fill::zeros);
-        m(0, 0) = means[k][0];
-        m(1, 0) = means[k][1];
-        m(2, 0) = means[k][2];
-        for (int i = 0; i < img.rows; i++) {
-            for (int j = 0; j < img.cols; j++) {
-                x = arma::mat(3, 1, arma::fill::zeros);
-                x(0, 0) = img.at<cv::Vec3b>(i, j)[0];
-                x(1, 0) = img.at<cv::Vec3b>(i, j)[1];
-                x(2, 0) = img.at<cv::Vec3b>(i, j)[2];
+    for (int i = 0; i < img.rows; i++) {
+        for (int j = 0; j < img.cols; j++) {
+            x = arma::mat(3, 1, arma::fill::zeros);
+            x(0, 0) = img.at<cv::Vec3b>(i, j)[0];
+            x(1, 0) = img.at<cv::Vec3b>(i, j)[1];
+            x(2, 0) = img.at<cv::Vec3b>(i, j)[2];
+            hSum = 0;
+            for (int k = 0; k < nClusters; k++) {
+                m = arma::mat(3, 1, arma::fill::zeros);
+                m(0, 0) = means[k][0];
+                m(1, 0) = means[k][1];
+                m(2, 0) = means[k][2];
 
                 xMinusM = x - m;
                 xMinusMTrProductSIProductxMinusM = xMinusM.t() * S[k].i() * xMinusM;
@@ -60,11 +63,8 @@ void EMImageClustering::EStep() {
 
                 hSum += h[i][j][k];
             }
-        }
-
-        // std::cout << "hSum: " << hSum << std::endl;
-        for (int i = 0; i < img.rows; i++) {
-            for (int j = 0; j < img.cols; j++) {
+            // std::cout << "hSum: " << hSum << std::endl;
+            for (int k = 0; k < nClusters; k++) {
                 h[i][j][k] /= hSum;
             }
         }
