@@ -61,42 +61,56 @@ void EMImageClustering::MStep() {
 }
 
 void EMImageClustering::initializeCovariances() {
-    S = new arma::mat [nClustering];
+    S = new arma::mat [nClusters];
 
     for (int k = 0; k < nClusters; k++) {
         S[k] = arma::mat(3, 3, arma::fill::eye);
     }
 
-    int XSumBlue, XSumGreen, XSumRed;
+    int XMinusMeanBlue, XMinusMeanGreen, XMinusMeanRed;
+    long int BBDevSum, GGDevSum, RRDevSum, BGDevSum, BRDevSum, GRDevSum;
+    int covBB, covGG, covRR, covBG, covBR, covGR;
     int nTotal = img.rows * img.cols;
     for (int k = 0; k < nClusters; k++) {
-        XSumBlue = 0;
-        XSumGreen = 0;
-        XSumRed = 0;
-        // stdDev(xBlue)
-        // stdDev(xGreen)
-        // stdDev(xRed)
+        BBDevSum = 0;
+        GGDevSum = 0;
+        RRDevSum = 0;
+        BGDevSum = 0;
+        BRDevSum = 0;
+        GRDevSum = 0;
+
         for (int i = 0; i < img.rows; i++) {
             for (int j = 0; j < img.cols; j++) {
-                XSumBlue += img.at<cv::Vec3b>(i, j)[0] - means[k][0];
-                XSumGreen += img.at<cv::Vec3b>(i, j)[1] - means[k][1];
-                XSumRed += img.at<cv::Vec3b>(i, j)[2] - means[k][2];
+                XMinusMeanBlue = img.at<cv::Vec3b>(i, j)[0] - means[k][0];
+                XMinusMeanGreen = img.at<cv::Vec3b>(i, j)[1] - means[k][1];
+                XMinusMeanRed = img.at<cv::Vec3b>(i, j)[2] - means[k][2];
+                BBDevSum += XMinusMeanBlue * XMinusMeanBlue;
+                GGDevSum += XMinusMeanGreen * XMinusMeanGreen;
+                RRDevSum += XMinusMeanRed * XMinusMeanRed;
+                BGDevSum += XMinusMeanBlue * XMinusMeanGreen;
+                BRDevSum += XMinusMeanBlue * XMinusMeanRed;
+                GRDevSum += XMinusMeanGreen * XMinusMeanRed;
             }
         }
 
-        //              E[(Xb - m)(Xg - m)]
-        // S (B, G) = -------------------------
-        //              stdDev(Xb).stdDev(Xg)
+        covBB = BBDevSum / (nTotal - 1);
+        covGG = GGDevSum / (nTotal - 1);
+        covRR = RRDevSum / (nTotal - 1);
+        covBG = BGDevSum / (nTotal - 1);
+        covBR = BRDevSum / (nTotal - 1);
+        covGR = GRDevSum / (nTotal - 1);
 
-        // S(0, 0) = ;
-        // S(0, 1) = ;
-        // S(0, 2) = ;
-        // S(1, 0) = ;
-        // S(1, 1) = ;
-        // S(1, 2) = ;
-        // S(2, 0) = ;
-        // S(2, 1) = ;
-        // S(2, 2) = ;
+        S[k](0, 0) = covBB; // BB
+        S[k](0, 1) = covBG; // BG
+        S[k](0, 2) = covBR; // BR
+
+        S[k](1, 0) = covBG; // GB
+        S[k](1, 1) = covGG; // GG
+        S[k](1, 2) = covGR; // GR
+
+        S[k](2, 0) = covBR; // RB
+        S[k](2, 1) = covGR; // RG
+        S[k](2, 2) = covRR; // RR
     }
 }
 
