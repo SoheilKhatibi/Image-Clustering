@@ -17,10 +17,11 @@ BUILD := build
 
 OPENCVINCLUDE = `pkg-config opencv4 --cflags`
 OPENCVINCLIB = `pkg-config opencv4 --libs`
+ARMADILLOLIB = -llapack -lblas -larmadillo
 
 EXT_LIB :=
 LDFLAGS :=
-LDPATHS := $(addprefix -L,$(LIB) $(EXT_LIB)) $(OPENCVINCLIB)
+LDPATHS := $(addprefix -L,$(LIB) $(EXT_LIB)) $(OPENCVINCLIB) $(ARMADILLOLIB)
 
 # Include directories
 INC_DIRS := $(INC) $(shell find $(SRC) -type d) 
