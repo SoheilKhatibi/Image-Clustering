@@ -1,7 +1,7 @@
 #include "emImageClustering.h"
 
 EMImageClustering::EMImageClustering(std::string imgAddr, int n) : AbstractImageClustering(imgAddr, n) {
-    // initializePValues();
+    initializePValues();
     initializeCovariances();
     initializeHValues();
 }
@@ -85,4 +85,11 @@ void EMImageClustering::initializeHValues() {
     }
 
     EStep();
+}
+
+void EMImageClustering::initializePValues() {
+    P = new double [nClusters];
+    for (int k = 0; k < nClusters; k++) {
+        P[k] = 1 / nClusters;
+    }
 }

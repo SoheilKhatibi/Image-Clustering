@@ -14,9 +14,11 @@ public:
     void MStep();
     void initializeCovariances();
     void initializeHValues();
+    void initializePValues();
 private:
     arma::mat* S;
     double *** h;
+    double* P;
 };
 
 #endif // EMIMAGECLUSTERING_H
