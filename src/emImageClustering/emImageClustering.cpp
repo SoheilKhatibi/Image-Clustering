@@ -43,7 +43,7 @@ void EMImageClustering::EStep() {
 
                 xMinusM = x - m;
                 xMinusMTrProductSIProductxMinusM = xMinusM.t() * S[k].i() * xMinusM;
-                h[i][j][k] = P[k] * (1 / (sqrt(det(S[k])))) * exp((-1/2) * xMinusMTrProductSIProductxMinusM(0, 0));
+                h[i][j][k] = P[k] * (1 / (sqrt(det(S[k])))) * exp((-0.5) * xMinusMTrProductSIProductxMinusM(0, 0));
                 hSum += h[i][j][k];
             }
         }
