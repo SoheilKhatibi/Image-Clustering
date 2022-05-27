@@ -26,8 +26,33 @@ bool EMImageClustering::converged() {
 }
 
 void EMImageClustering::EStep() {
-    for () {
+    double hSum;
+    arma::mat x, m, xMinusM, xMinusMTrProductSIProductxMinusM;
+    for (int k = 0; k < nClusters; k++) {
+        hSum = 0;
+        m = arma::mat(3, 1, arma::fill::zeros);
+        m(0, 0) = means[k][0];
+        m(1, 0) = means[k][1];
+        m(2, 0) = means[k][2];
+        for (int i = 0; i < img.rows; i++) {
+            for (int j = 0; j < img.cols; j++) {
+                x = arma::mat(3, 1, arma::fill::zeros);
+                x(0, 0) = img.at<cv::Vec3b>(i, j)[0];
+                x(1, 0) = img.at<cv::Vec3b>(i, j)[1];
+                x(2, 0) = img.at<cv::Vec3b>(i, j)[2];
 
+                xMinusM = x - m;
+                xMinusMTrProductSIProductxMinusM = xMinusM.t() * S[k].i() * xMinusM;
+                h[i][j][k] = P[k] * (1 / (sqrt(det(S[k])))) * exp((-1/2) * xMinusMTrProductSIProductxMinusM(0, 0));
+                hSum += h[i][j][k];
+            }
+        }
+
+        for (int i = 0; i < img.rows; i++) {
+            for (int j = 0; j < img.cols; j++) {
+                h[i][j][k] /= hSum;
+            }
+        }
     }
 }
 
