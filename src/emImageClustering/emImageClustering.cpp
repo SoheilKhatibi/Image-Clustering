@@ -132,3 +132,17 @@ void EMImageClustering::initializePValues() {
         P[k] = 1 / nClusters;
     }
 }
+
+void EMImageClustering::updatePs() {
+    int nTotal = img.rows * img.cols;
+    double hSum;
+    for (int k = 0; k < nClusters; k++) {
+        hSum = 0;
+        for (int i = 0; i < img.rows; i++) {
+            for (int j = 0; j < img.cols; j++) {
+                hSum += h[i][j][k];
+            }
+        }
+        P[k] = hSum / nTotal;
+    }
+}

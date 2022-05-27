@@ -15,6 +15,7 @@ public:
     void initializeCovariances();
     void initializeHValues();
     void initializePValues();
+    void updatePs();
 private:
     arma::mat* S;
     double *** h;
