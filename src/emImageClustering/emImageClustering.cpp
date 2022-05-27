@@ -133,6 +133,29 @@ void EMImageClustering::initializePValues() {
     }
 }
 
+void EMImageClustering::updateMeans() {
+    double hSum;
+    arma::mat hXSum, x;
+    for (int k = 0; k < nClusters; k++) {
+        hSum = 0;
+        hXSum = arma::mat(3, 1, arma::fill::zeros);
+        for (int i = 0; i < img.rows; i++) {
+            for (int j = 0; j < img.cols; j++) {
+                x = arma::mat(3, 1, arma::fill::zeros);
+                x(0, 0) = img.at<cv::Vec3b>(i, j)[0];
+                x(1, 0) = img.at<cv::Vec3b>(i, j)[1];
+                x(2, 0) = img.at<cv::Vec3b>(i, j)[2];
+
+                hSum += h[i][j][k];
+                hXSum += h[i][j][k] * x;
+            }
+        }
+        means[k][0] = hXSum(0, 0) / hSum;
+        means[k][1] = hXSum(1, 0) / hSum;
+        means[k][2] = hXSum(2, 0) / hSum;
+    }
+}
+
 void EMImageClustering::updatePs() {
     int nTotal = img.rows * img.cols;
     double hSum;
