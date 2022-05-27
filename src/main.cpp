@@ -13,8 +13,8 @@ int main(int argc, char** argv) {
         return 1;
     }
 
-    KMeansImageClustering algorithm(argv[1], atoi(argv[2]));
-    // EMImageClustering algorithm("Lenna.png", 6);
+    // KMeansImageClustering algorithm(argv[1], atoi(argv[2]));
+    EMImageClustering algorithm(argv[1], atoi(argv[2]));
     algorithm.cluster();
 
     // arma::Cube<int> a(5, 4, 3, arma::fill::ones);
