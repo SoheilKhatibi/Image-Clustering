@@ -198,3 +198,19 @@ void EMImageClustering::updatePs() {
         P[k] = hSum / nTotal;
     }
 }
+
+void EMImageClustering::printPs() {
+    std::cout << "Component densities: " << std::endl;
+    for (int i = 0; i < nClusters; i++) {
+        std::cout << "P[" << i << "]: " << P[i] << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+void EMImageClustering::printCovariances() {
+    std::cout << "Covariances: " << std::endl;
+    for (int i = 0; i < nClusters; i++) {
+        S[i].print("S[" + std::to_string(i) + "]");
+    }
+    std::cout << std::endl;
+}

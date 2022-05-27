@@ -18,6 +18,8 @@ public:
     void updateMeans();
     void updateCovariances();
     void updatePs();
+    void printPs();
+    void printCovariances();
 private:
     arma::mat* S;
     double *** h;
