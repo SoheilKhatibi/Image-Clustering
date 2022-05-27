@@ -43,11 +43,26 @@ void EMImageClustering::EStep() {
 
                 xMinusM = x - m;
                 xMinusMTrProductSIProductxMinusM = xMinusM.t() * S[k].i() * xMinusM;
+                // xMinusM.t().print("xMinusM");
+                // S[k].i().print("S");
+                // xMinusM.print("xMinusM");
+                // xMinusMTrProductSIProductxMinusM.print("output");
+                // std::cout << xMinusMTrProductSIProductxMinusM.n_rows << " " << xMinusMTrProductSIProductxMinusM.n_cols << std::endl;
+                // std::cout << std::endl;
+
                 h[i][j][k] = P[k] * (1 / (sqrt(det(S[k])))) * exp((-0.5) * xMinusMTrProductSIProductxMinusM(0, 0));
+
+                // std::cout << P[k] << std::endl;
+                // std::cout << (1 / (sqrt(det(S[k])))) << std::endl;
+                // std::cout << exp((-0.5) * xMinusMTrProductSIProductxMinusM(0, 0)) << std::endl;
+                // std::cout << h[i][j][k] << std::endl;
+                // std::cout << "###############################################################################################################################" << std::endl;
+
                 hSum += h[i][j][k];
             }
         }
 
+        // std::cout << "hSum: " << hSum << std::endl;
         for (int i = 0; i < img.rows; i++) {
             for (int j = 0; j < img.cols; j++) {
                 h[i][j][k] /= hSum;
@@ -193,8 +208,10 @@ void EMImageClustering::updatePs() {
         for (int i = 0; i < img.rows; i++) {
             for (int j = 0; j < img.cols; j++) {
                 hSum += h[i][j][k];
+                // std::cout << "h[" << i << "][" << j << "][" << k << "]: " << h[i][j][k] << ", hSum: " << hSum << std::endl;
             }
         }
+        // std::cout << "hSum: " << hSum << std::endl;
         P[k] = hSum / nTotal;
     }
 }
