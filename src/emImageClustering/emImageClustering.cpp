@@ -131,7 +131,7 @@ void EMImageClustering::initializeHValues() {
 void EMImageClustering::initializePValues() {
     P = new double [nClusters];
     for (int k = 0; k < nClusters; k++) {
-        P[k] = 1 / nClusters;
+        P[k] = 1 / double(nClusters);
     }
 }
 
