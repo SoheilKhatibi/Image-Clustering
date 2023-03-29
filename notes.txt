@@ -1,0 +1,13 @@
+util:
+Load video or image
+display video or image
+convert opencv mat to armadillo mat
+convert armadillo mat to opencv mat
+
+k-means:
+calculate the distance
+find the closest cluster
+label the image
+
+EM:
+
