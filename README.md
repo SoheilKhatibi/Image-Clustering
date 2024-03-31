@@ -24,6 +24,7 @@ In this project, The task is to find the best k colors that can present a fully 
 ## References:
 
 - [Introduction to Machine Learning, Book by Ethem Alpaydın](https://books.google.com/books/about/Introduction_to_Machine_Learning.html?id=NP5bBAAAQBAJ&source=kp_book_description), Chapter 7
+- Makefile template from [https://gist.github.com/zobayer1/7265c698d1b024bb7723bc624aeedeb3](https://gist.github.com/zobayer1/7265c698d1b024bb7723bc624aeedeb3)
 
 
 [ci-badge]: https://github.com/executablebooks/markdown-it-plugin-template/workflows/CI/badge.svg
